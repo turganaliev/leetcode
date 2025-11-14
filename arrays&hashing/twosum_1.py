@@ -5,19 +5,27 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         prevMap = {}
 
-        for i, n in enumerate(nums):
-            diff = target - n
+        for i in range(len(nums)):
+            diff = target - nums[i]
             if diff in prevMap:
-                return [prevMap[diff], i]
-            prevMap[n] = i
+                return [i, prevMap[diff]]
+            else:
+                prevMap[nums[i]] = i
+
+        # for i, n in enumerate(nums):
+        #     diff = target - n
+        #     if diff in prevMap:
+        #         return [prevMap[diff], i]
+        #     prevMap[n] = i
 
 
 if __name__=="__main__":
     input_nums = input()
-    nums = []
+    nums = input_nums.split(' ')
+    numbers = []
     target = int(input())
-    for n in input_nums:
-        nums.append(int(n))
+    for n in nums:
+        numbers.append(int(n))
     solution = Solution()
-    res = solution.twoSum(nums, target)
+    res = solution.twoSum(numbers, target)
     print(res)
